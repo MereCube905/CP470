@@ -10,7 +10,7 @@
         android:layout_width="379dp"
         android:layout_height="32dp"
         android:layout_weight="1"
-        android:layout_gravity="right"
+        android:gravity="right"
         android:text="TextView" />
     <ImageView
         android:id="@+id/imageView2"
