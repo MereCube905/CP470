@@ -13,5 +13,7 @@
     <string name="dialog_message">Are you sure you want to finish the activity?</string>
     <string name="ok">yes</string>
     <string name="cancel">no</string>
+    <string name="Chat">Start Chat</string>
+    <string name="Send">Send</string>
 
 </resources>
