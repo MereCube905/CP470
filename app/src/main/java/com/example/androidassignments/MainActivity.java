@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "MainActivity";
-    Button MainButton, ChatButton;
+    Button MainButton, ChatButton, ToolbarButton;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
                 Log.i(ACTIVITY_NAME, "User clicked Start Chat");
                 Intent intent = new Intent(MainActivity.this, ChatWindow.class);
                 startActivityForResult(intent, 10);
+            }
+        });
+        ToolbarButton = findViewById(R.id.ToolbarBtn);
+        ToolbarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(ACTIVITY_NAME, "User clicked Test Toolbar");
+                Intent intent = new Intent(MainActivity.this, TestToolbar.class);
+                startActivity(intent);
             }
         });
 
