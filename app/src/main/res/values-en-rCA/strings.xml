@@ -31,4 +31,16 @@
     <string name="DialogTitleToolbar">Do you want to go back?</string>
     <string name="Message">New Message</string>
     <string name="ItemSnack">Change Snackbar:</string>
+    <string name="WeatherBtn">Weather</string>
+    <string name="City">City:</string>
+    <string-array name="Cities">
+        <item>Ottawa</item>
+        <item>Toronto</item>
+        <item>Vancouver</item>
+        <item>Montreal</item>
+        <item>Calgary</item>
+        <item>Edmonton</item>
+        <item>Waterloo</item>
+        <item>Winnipeg</item>
+    </string-array>
 </resources>

@@ -7,18 +7,38 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     protected static final String ACTIVITY_NAME = "MainActivity";
-    Button MainButton, ChatButton, ToolbarButton;
+    Button MainButton, ChatButton, ToolbarButton, WeatherButton;
+    Spinner citiesList;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.i(ACTIVITY_NAME, "In onCreate()");
+        citiesList = (Spinner) findViewById(R.id.cities);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Cities, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        citiesList.setAdapter(adapter);
+        WeatherButton = findViewById(R.id.WeatherBtn);
+        WeatherButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, WeatherForecast.class);
+                String selectedCity = citiesList.getSelectedItem().toString();
+                Bundle bundle = new Bundle();
+                bundle.putString("stuff", selectedCity);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
         MainButton = findViewById(R.id.mainbutton);
         MainButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,5 +103,29 @@ public class MainActivity extends AppCompatActivity {
 
         super.onDestroy();
         Log.i(ACTIVITY_NAME, "In onDestroy()");
+    }
+    public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view,
+                                   int pos, long id) {
+            // An item was selected. You can retrieve the selected item using
+            // parent.getItemAtPosition(pos)
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    }
+    @Override
+
+    public void onBackPressed() {
+
+        super.onBackPressed();
+
+        setResult(Activity.RESULT_CANCELED);
+
+        finish();
+
     }
 }
